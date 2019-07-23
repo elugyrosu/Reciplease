@@ -10,14 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Reciplease-->
         <scene sceneID="qkq-LP-0cg">
             <objects>
                 <tableViewController id="w1c-xm-NPi" customClass="ResultTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OsQ-T8-DFJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableView" id="Enb-Xh-PAh">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -36,7 +36,9 @@
                             <outlet property="delegate" destination="w1c-xm-NPi" id="tsf-nB-BQl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="2Cc-e8-HUv"/>
+                    <navigationItem key="navigationItem" title="Reciplease" id="2Cc-e8-HUv">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="IJU-7C-hc9"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiZ-WS-NqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,9 +49,9 @@
             <objects>
                 <viewController id="7Lh-8S-vbR" customClass="DetailViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7nz-IL-hmh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="iS7-1F-dH0"/>
                     </view>
                 </viewController>
@@ -64,9 +66,19 @@
                     <tabBarItem key="tabBarItem" title="Search" id="80w-A5-rth">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-17"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3RZ-hZ-OOA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="3RZ-hZ-OOA">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="TV7-Rz-56W" kind="relationship" relationship="rootViewController" id="hbS-J9-CGL"/>
@@ -76,47 +88,139 @@
             </objects>
             <point key="canvasLocation" x="-14" y="-875"/>
         </scene>
-        <!--View Controller-->
+        <!--Reciplease-->
         <scene sceneID="e6Q-gw-Z90">
             <objects>
                 <viewController id="TV7-Rz-56W" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cP2-zT-796">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btf-8L-43i">
-                                <rect key="frame" x="30" y="459" width="260" height="40"/>
+                                <rect key="frame" x="30" y="395" width="260" height="40"/>
+                                <color key="backgroundColor" red="0.24038970470428467" green="0.58807677030563354" blue="0.35104995965957642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6mX-o7-jQH"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Search for recipes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="w1c-xm-NPi" kind="show" id="NoY-Pf-R2N"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-aa-Gy9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qCX-2X-V14">
+                                        <rect key="frame" x="8" y="0.0" width="304" height="72"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOJ-hl-iJw">
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEM-Nb-tdw">
+                                                <rect key="frame" x="0.0" y="42" width="304" height="30"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lemon, Cheese, Sausage..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spL-Ko-9ng">
+                                                        <rect key="frame" x="0.0" y="0.0" width="244" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDX-Zz-gdT">
+                                                        <rect key="frame" x="244" y="0.0" width="60" height="30"/>
+                                                        <color key="backgroundColor" red="0.24038970470428467" green="0.58807677030563354" blue="0.35104995965957642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="kDX-Zz-gdT" secondAttribute="height" multiplier="2:1" id="LAl-h1-VdD"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Add">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="DHP-CM-LoA"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qCX-2X-V14" firstAttribute="top" secondItem="Vlf-aa-Gy9" secondAttribute="top" id="3Sf-UE-9Zm"/>
+                                    <constraint firstAttribute="height" constant="80" id="GuN-wH-Ik4"/>
+                                    <constraint firstAttribute="trailing" secondItem="qCX-2X-V14" secondAttribute="trailing" constant="8" id="OPR-p1-GsZ"/>
+                                    <constraint firstItem="qCX-2X-V14" firstAttribute="leading" secondItem="Vlf-aa-Gy9" secondAttribute="leading" constant="8" id="cyU-IE-WPg"/>
+                                    <constraint firstAttribute="bottom" secondItem="qCX-2X-V14" secondAttribute="bottom" constant="8" id="zvN-dO-648"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYM-Sc-jio">
+                                <rect key="frame" x="8" y="88" width="304" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJW-X2-J7m">
+                                        <rect key="frame" x="0.0" y="0.0" width="244" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYt-Ux-pY9">
+                                        <rect key="frame" x="244" y="0.0" width="60" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fYt-Ux-pY9" secondAttribute="height" multiplier="2:1" id="fhS-as-asA"/>
+                                        </constraints>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bs8-xU-nuU"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U76-ce-Kn1">
+                                <rect key="frame" x="30" y="126" width="282" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Vlf-aa-Gy9" firstAttribute="top" secondItem="otQ-M0-rkb" secondAttribute="top" id="2Ve-gr-6Za"/>
+                            <constraint firstItem="U76-ce-Kn1" firstAttribute="leading" secondItem="otQ-M0-rkb" secondAttribute="leading" constant="30" id="B1L-4K-KDg"/>
+                            <constraint firstItem="otQ-M0-rkb" firstAttribute="trailing" secondItem="nYM-Sc-jio" secondAttribute="trailing" constant="8" id="E1g-V5-NBl"/>
+                            <constraint firstItem="U76-ce-Kn1" firstAttribute="top" secondItem="nYM-Sc-jio" secondAttribute="bottom" constant="8" id="JBa-wg-ut6"/>
+                            <constraint firstItem="nYM-Sc-jio" firstAttribute="top" secondItem="Vlf-aa-Gy9" secondAttribute="bottom" constant="8" id="OAj-6s-it4"/>
+                            <constraint firstItem="otQ-M0-rkb" firstAttribute="trailing" secondItem="Vlf-aa-Gy9" secondAttribute="trailing" id="PuR-k5-317"/>
                             <constraint firstItem="otQ-M0-rkb" firstAttribute="trailing" secondItem="btf-8L-43i" secondAttribute="trailing" constant="30" id="Yov-Ee-bTP"/>
+                            <constraint firstItem="Vlf-aa-Gy9" firstAttribute="leading" secondItem="otQ-M0-rkb" secondAttribute="leading" id="biv-gX-TQ1"/>
                             <constraint firstItem="otQ-M0-rkb" firstAttribute="bottom" secondItem="btf-8L-43i" secondAttribute="bottom" constant="20" id="gg4-gl-wqi"/>
+                            <constraint firstItem="nYM-Sc-jio" firstAttribute="leading" secondItem="otQ-M0-rkb" secondAttribute="leading" constant="8" id="kkV-lV-S6v"/>
+                            <constraint firstItem="otQ-M0-rkb" firstAttribute="trailing" secondItem="U76-ce-Kn1" secondAttribute="trailing" constant="8" id="noT-BP-aBI"/>
                             <constraint firstItem="btf-8L-43i" firstAttribute="leading" secondItem="otQ-M0-rkb" secondAttribute="leading" constant="30" id="vsW-Ap-ktr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="otQ-M0-rkb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wep-fg-XJy"/>
+                    <navigationItem key="navigationItem" title="Reciplease" id="wep-fg-XJy">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6s1-Zd-uMr"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfq-83-t3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="759" y="-875"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Reciplease-->
         <scene sceneID="gXL-zG-W7S">
             <objects>
                 <tableViewController id="Z7g-jl-EIC" customClass="FavoriteTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YZl-zg-aEH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteRecipeTableView" id="QwR-Ir-pwU">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -135,7 +239,9 @@
                             <outlet property="delegate" destination="Z7g-jl-EIC" id="Xd9-Ir-NdD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Zpt-VV-NRp"/>
+                    <navigationItem key="navigationItem" title="Reciplease" id="Zpt-VV-NRp">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Vo2-6v-FvN"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwy-TL-art" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,9 +252,9 @@
             <objects>
                 <viewController id="P6Y-9e-dME" customClass="FavoriteDetailViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ndt-W1-SBu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="zZS-FL-dZf"/>
                     </view>
                 </viewController>
@@ -163,9 +269,19 @@
                     <tabBarItem key="tabBarItem" title="Favorite" id="afx-z8-6P1">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-17"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fmJ-WE-GCo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="fmJ-WE-GCo">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.20472121239999999" green="0.1880749464" blue="0.18307939170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Z7g-jl-EIC" kind="relationship" relationship="rootViewController" id="xEg-bI-huf"/>
@@ -179,10 +295,10 @@
         <scene sceneID="rMc-0a-GOE">
             <objects>
                 <tabBarController id="pHA-OG-Pcs" customClass="TabBarViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zYX-e7-VrH">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zYX-e7-VrH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>

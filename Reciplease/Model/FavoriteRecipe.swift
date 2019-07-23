@@ -11,7 +11,7 @@ import CoreData
 
 class FavoriteRecipe: NSManagedObject {
     static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [FavoriteRecipe] {
-        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest() as! NSFetchRequest<FavoriteRecipe>
+        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
 
         guard let recipeList = try? viewContext.fetch(request) else { return [] }
         return recipeList

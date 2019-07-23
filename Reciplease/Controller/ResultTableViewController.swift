@@ -10,7 +10,7 @@ import UIKit
 
 class ResultViewController: UITableViewController {
     
-    var recipeList = FavoriteRecipe.fetchAll()
+    let edamamService = EdamamService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,18 +89,20 @@ class ResultViewController: UITableViewController {
     }
     */
     
-   override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "Add some tasks in the list"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        label.textAlignment = .center
-        label.textColor = .darkGray
-        return label
-    }
-    
-   override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return recipeList.isEmpty ? 200 : 0
-    }
+//   override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let label = UILabel()
+//        label.text = "Add some tasks in the list"
+//        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+//        label.textAlignment = .center
+//        label.textColor = .darkGray
+//        return label
+//    }
+//
+//   override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return recipeList.isEmpty ? 200 : 0
+//    }
 
 
 }
+
+

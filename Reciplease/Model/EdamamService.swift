@@ -15,9 +15,9 @@ class EdamamService{
         self.edamamSession = edamamSession
     }
     
-    func getRecipeList(completionHandler: @escaping (Bool, FavoriteRecipe?) -> Void){
+    func getRecipeList(completionHandler: @escaping (Bool, EdamamRecipes?) -> Void){
         guard let url = URL(string: edamamSession.urlStringApi) else{return}
-        edamamSession.request(url: url { responseData in
+        edamamSession.request(url: url) { responseData in
             guard responseData.response?.statusCode == 200 else {
                 completionHandler(false, nil)
                 return
@@ -26,11 +26,11 @@ class EdamamService{
                 completionHandler(false, nil)
                 return
             }
-            guard let recipe = try? JSONDecoder().decode(Recipe.self, from: data) else {
+            guard let recipeList = try? JSONDecoder().decode(EdamamRecipes.self, from: data) else {
                 completionHandler(false, nil)
                 return
             }
-            completionHandler(true, FavoriteRecipe)
-        })
+            completionHandler(true, recipeList)
+        }
     }
 }
