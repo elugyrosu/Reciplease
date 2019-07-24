@@ -9,6 +9,7 @@
 import Foundation
 // MARK: - Welcome
 struct EdamamRecipes: Decodable {
+    let count: Int
     let hits: [Hit]
 }
 

@@ -15,7 +15,7 @@ protocol EdamamProtocol{
 }
 extension EdamamProtocol{
     var urlStringApi: String{
-        let ingredients = "Chicken"
-        return "https://api.edamam.com/search?app_key=\(ApiKeysManager.edamamApiKey)&app_id=3e840b64&to=100&q=\(ingredients)&to=100"
+//        let ingredients = "Chicken"
+        return "https://api.edamam.com/search?app_id=3e840b64&app_key=\(ApiKeysManager.edamamApiKey)&to=100&q="
     }
 }

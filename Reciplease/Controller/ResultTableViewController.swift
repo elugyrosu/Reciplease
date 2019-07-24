@@ -8,31 +8,47 @@
 
 import UIKit
 
-class ResultViewController: UITableViewController {
+class ResultTableViewController: UITableViewController {
     
     let edamamService = EdamamService()
-
+    var recipesList = [Hit]()
+    var recipesCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        recipesCall()
+        tableView.reloadData()
     }
-
-    // MARK: - Table view data source
-
+    private func recipesCall(){
+        edamamService.getRecipeList(ingredients: "chicken") { success, edamamRecipes in
+            if success {
+                guard let edamamRecipes = edamamRecipes else { return }
+                self.recipesCount = edamamRecipes.hits.count
+                self.recipesList = edamamRecipes.hits
+                print(edamamRecipes.hits)
+            }
+        }
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+
+        return self.recipesCount
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        
+//        let spending = spendings[indexPath.section][indexPath.row]
+        cell.textLabel?.text = recipesList[indexPath.row].recipe.label
+        cell.detailTextLabel?.text = recipesList[indexPath.row].recipe.ingredientLines[0]
+        
+        return cell
+    }
+
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

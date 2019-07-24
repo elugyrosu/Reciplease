@@ -15,8 +15,9 @@ class EdamamService{
         self.edamamSession = edamamSession
     }
     
-    func getRecipeList(completionHandler: @escaping (Bool, EdamamRecipes?) -> Void){
-        guard let url = URL(string: edamamSession.urlStringApi) else{return}
+    func getRecipeList(ingredients: String, completionHandler: @escaping (Bool, EdamamRecipes?) -> Void){
+        let urlString = edamamSession.urlStringApi + ingredients
+        guard let url = URL(string: urlString) else{return}
         edamamSession.request(url: url) { responseData in
             guard responseData.response?.statusCode == 200 else {
                 completionHandler(false, nil)
