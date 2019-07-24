@@ -127,11 +127,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEM-Nb-tdw">
                                                 <rect key="frame" x="0.0" y="42" width="304" height="30"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lemon, Cheese, Sausage..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spL-Ko-9ng">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lemon, Cheese, Sausage..." clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="spL-Ko-9ng">
                                                         <rect key="frame" x="0.0" y="0.0" width="244" height="30"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="continue"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="TV7-Rz-56W" id="Agj-Dd-iBN"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDX-Zz-gdT">
                                                         <rect key="frame" x="244" y="0.0" width="60" height="30"/>
@@ -198,6 +200,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Vlf-aa-Gy9" firstAttribute="top" secondItem="otQ-M0-rkb" secondAttribute="top" id="2Ve-gr-6Za"/>
                             <constraint firstItem="U76-ce-Kn1" firstAttribute="leading" secondItem="otQ-M0-rkb" secondAttribute="leading" constant="30" id="B1L-4K-KDg"/>
@@ -213,16 +216,25 @@
                             <constraint firstItem="btf-8L-43i" firstAttribute="leading" secondItem="otQ-M0-rkb" secondAttribute="leading" constant="30" id="vsW-Ap-ktr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="otQ-M0-rkb"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="I76-8I-2AC" appends="YES" id="6ia-Mg-nnW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="wep-fg-XJy">
                         <barButtonItem key="backBarButtonItem" title="Back" id="6s1-Zd-uMr"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ingredientListLabel" destination="U76-ce-Kn1" id="9Mi-8G-cN0"/>
                         <outlet property="ingredientTextField" destination="spL-Ko-9ng" id="PaK-ao-OyM"/>
                         <segue destination="w1c-xm-NPi" kind="show" identifier="segueToTableView" id="ksl-DQ-YLF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfq-83-t3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I76-8I-2AC">
+                    <connections>
+                        <action selector="dismissedKeyboard:" destination="TV7-Rz-56W" id="Oz0-CA-XaP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="759" y="-875"/>
         </scene>

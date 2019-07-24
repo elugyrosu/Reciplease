@@ -198,10 +198,10 @@
 			children = (
 				FFD9879022DE21570086C575 /* FavoriteRecipe.xcdatamodeld */,
 				FFEEFECF22E0662700F19F50 /* FavoriteRecipe.swift */,
+				FFFE477A22E1ECB100DFBF50 /* EdamamRecipes.swift */,
 				FF9F862922E0D3B10093C0EA /* EdamamService.swift */,
 				FF9F862B22E0D45E0093C0EA /* EdamamSession.swift */,
 				FF9F862D22E0D4710093C0EA /* EdamamProtocol.swift */,
-				FFFE477A22E1ECB100DFBF50 /* EdamamRecipes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

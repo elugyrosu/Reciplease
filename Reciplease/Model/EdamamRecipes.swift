@@ -20,11 +20,20 @@ struct Hit: Decodable {
 
 // MARK: - Recipe
 struct Recipe: Decodable {
+    let uri: String
     let label: String
     let image: String
+    let source: String
     let url: String
-    let yield: Int
+    let shareAs: String
+    let yield: Double
+//    let healthLabels: [HealthLabel]
     let ingredientLines: [String]
     let totalTime: Int
-
 }
+//enum HealthLabel: String, Decodable {
+//    case alcoholFree = "Alcohol-Free"
+//    case peanutFree = "Peanut-Free"
+//    case sugarConscious = "Sugar-Conscious"
+//    case treeNutFree = "Tree-Nut-Free"
+//}
