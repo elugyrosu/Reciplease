@@ -94,7 +94,7 @@
         <!--Reciplease-->
         <scene sceneID="e6Q-gw-Z90">
             <objects>
-                <viewController id="TV7-Rz-56W" sceneMemberID="viewController">
+                <viewController id="TV7-Rz-56W" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cP2-zT-796">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="w1c-xm-NPi" kind="show" id="NoY-Pf-R2N"/>
+                                    <action selector="searchButton:" destination="TV7-Rz-56W" eventType="touchUpInside" id="Ihf-oF-Mq8"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-aa-Gy9">
@@ -142,6 +142,9 @@
                                                         <state key="normal" title="Add">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="addIngredientButton:" destination="TV7-Rz-56W" eventType="touchUpInside" id="sbx-sJ-jev"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -178,6 +181,9 @@
                                         <state key="normal" title="Clear">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clearIngredientsButton:" destination="TV7-Rz-56W" eventType="touchUpInside" id="LO4-Bd-AcT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -211,6 +217,10 @@
                     <navigationItem key="navigationItem" title="Reciplease" id="wep-fg-XJy">
                         <barButtonItem key="backBarButtonItem" title="Back" id="6s1-Zd-uMr"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ingredientTextField" destination="spL-Ko-9ng" id="PaK-ao-OyM"/>
+                        <segue destination="w1c-xm-NPi" kind="show" identifier="segueToTableView" id="ksl-DQ-YLF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfq-83-t3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

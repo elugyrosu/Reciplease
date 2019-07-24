@@ -10,33 +10,16 @@ import UIKit
 
 class ResultTableViewController: UITableViewController {
     
-    let edamamService = EdamamService()
     var recipesList = [Hit]()
-    var recipesCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipesCall()
-        tableView.reloadData()
-    }
-    private func recipesCall(){
-        edamamService.getRecipeList(ingredients: "chicken") { success, edamamRecipes in
-            if success {
-                guard let edamamRecipes = edamamRecipes else { return }
-                self.recipesCount = edamamRecipes.hits.count
-                self.recipesList = edamamRecipes.hits
-                print(edamamRecipes.hits)
-            }
-        }
-    }
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 
-        return self.recipesCount
+        return self.recipesList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
