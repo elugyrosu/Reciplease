@@ -10,10 +10,16 @@ import UIKit
 
 class ResultTableViewController: UITableViewController {
     
+    @IBOutlet var resultTableView: UITableView!
     var recipesList = [Hit]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registerTableViewCells()
+    }
+    func registerTableViewCells(){
+        let recipeCell = UINib(nibName: "CustomCell", bundle: nil)
+        self.tableView.register(recipeCell, forCellReuseIdentifier: "CustomCell")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,12 +29,71 @@ class ResultTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as? CustomCell else {return UITableViewCell()}
         
 //        let spending = spendings[indexPath.section][indexPath.row]
-        cell.textLabel?.text = recipesList[indexPath.row].recipe.label
-        cell.detailTextLabel?.text = recipesList[indexPath.row].recipe.ingredientLines[0]
+        cell.titleLabelView.text = recipesList[indexPath.row].recipe.label
+        cell.servingsLabelView.text = String(Int(recipesList[indexPath.row].recipe.yield)) + " x ☺︎"
+ 
+        guard let url = URL(string: recipesList[indexPath.row].recipe.image) else {return cell}
+        cell.cellImageView.load(url: url)
         
+        if recipesList[indexPath.row].recipe.totalTime != 0 {
+            cell.timeLabelView.text = String(recipesList[indexPath.row].recipe.totalTime) + " min ⧖"
+        }else{
+            cell.timeLabelView.text = "-/- ⧖"
+        }
+
+        
+        var healthLabelString = String()
+        var i = 0
+        
+        for label in recipesList[indexPath.row].recipe.healthLabels{
+            var stringHealth = String()
+
+            
+            switch label {
+            case .alcoholCocktail: stringHealth = "Alcohol"
+            case .alcoholFree: stringHealth = "Alcohol free"
+            case .celeryFree: stringHealth = "Celery free"
+            case .crustaceanFree: stringHealth = "Crustacean free"
+            case .dairyFree: stringHealth = "Dairy free"
+            case .eggFree: stringHealth = "Egg free"
+            case .fishFree: stringHealth = "Fish free"
+            case .glutenFree: stringHealth = "Gluten free"
+            case .keto: stringHealth = "Keto friendly"
+            case .kidneyFriendly: stringHealth = "Kidney friendly"
+            case .kosher: stringHealth = "Kosher"
+            case .lowPotassium: stringHealth = "Low potassium"
+            case .lupineFree: stringHealth = "Lupine free"
+            case .mustardFree: stringHealth = "Mustard free"
+            case .noOilAdded: stringHealth = "No oil added"
+            case .lowSugar: stringHealth = "Low sugar"
+            case .paleo: stringHealth = "Paleo"
+            case .peanutFree: stringHealth = "Peanut free"
+            case .pescatarian: stringHealth = "Pescatarian"
+            case .porkFree: stringHealth = "Pork free"
+            case .redMeatFree: stringHealth = "Red meat free"
+            case .sesameFree: stringHealth = "Sesame free"
+            case .shellfishFree: stringHealth = "Shellfish free"
+            case .soyFree: stringHealth = "Soy free"
+            case .sugarConscious: stringHealth = "Sugar conscious"
+            case .treeNutFree: stringHealth = "Tree nut tree"
+            case .vegan: stringHealth = "Vegan"
+            case .vegetarian: stringHealth = "Vegetarian"
+            case .wheatFree: stringHealth = "Wheat free"
+                
+            }
+            if i >= 1{
+                healthLabelString += "\n"
+            }
+            healthLabelString += stringHealth + " ✔︎"
+            
+            i += 1
+            
+        }
+        cell.healthLabelView.text = healthLabelString
+
         return cell
     }
 
@@ -105,3 +170,17 @@ class ResultTableViewController: UITableViewController {
 }
 
 
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                        self?.contentMode = .scaleAspectFill
+                    }
+                }
+            }
+        }
+    }
+}

@@ -14,23 +14,10 @@
         <scene sceneID="qkq-LP-0cg">
             <objects>
                 <tableViewController id="w1c-xm-NPi" customClass="ResultTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OsQ-T8-DFJ" userLabel="Recipe Table View">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="122" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OsQ-T8-DFJ" userLabel="Recipe Table View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.20472121238708496" green="0.18807494640350342" blue="0.18307939171791077" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RecipeCell" id="Enb-Xh-PAh" userLabel="RecipeCell">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Enb-Xh-PAh" id="hc3-Do-Fof">
-                                    <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="7Lh-8S-vbR" kind="show" id="hqW-Vz-5cb"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="w1c-xm-NPi" id="laM-fC-4Yr"/>
                             <outlet property="delegate" destination="w1c-xm-NPi" id="tsf-nB-BQl"/>
@@ -39,6 +26,10 @@
                     <navigationItem key="navigationItem" title="Reciplease" id="2Cc-e8-HUv">
                         <barButtonItem key="backBarButtonItem" title="Back" id="IJU-7C-hc9"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="resultTableView" destination="OsQ-T8-DFJ" id="wDd-X5-PvY"/>
+                        <segue destination="7Lh-8S-vbR" kind="show" identifier="segueToDetail" id="dBa-NL-RmX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiZ-WS-NqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -130,6 +121,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lemon, Cheese, Sausage..." clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="spL-Ko-9ng">
                                                         <rect key="frame" x="0.0" y="0.0" width="244" height="30"/>
                                                         <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="continue"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="TV7-Rz-56W" id="Agj-Dd-iBN"/>

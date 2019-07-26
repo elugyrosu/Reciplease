@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3C38C078D31B28C4472706B7 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB3D5B618AE685940F0E841 /* Pods_Reciplease.framework */; };
 		5C9368A8EFA9AC4A2C1E56FE /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2426D0ED44849F76328BA6C4 /* Pods_RecipleaseTests.framework */; };
-		FF5D8AFD22E84B8A00821FFD /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D8AFB22E84B8A00821FFD /* RecipeCell.swift */; };
-		FF5D8AFE22E84B8A00821FFD /* RecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5D8AFC22E84B8A00821FFD /* RecipeCell.xib */; };
+		FF5D8AFD22E84B8A00821FFD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D8AFB22E84B8A00821FFD /* CustomCell.swift */; };
+		FF5D8AFE22E84B8A00821FFD /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */; };
 		FF7A235522DF6A0800194E54 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */; };
 		FF7A235722DF77AC00194E54 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A235622DF77AC00194E54 /* TabBarViewController.swift */; };
 		FF9F862622E0D2F40093C0EA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9F862522E0D2F40093C0EA /* ApiKeys.plist */; };
@@ -23,12 +23,12 @@
 		FFC8DA3B22DF44FE0047283C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8DA3A22DF44FE0047283C /* SearchViewController.swift */; };
 		FFC8DA3D22DF45120047283C /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8DA3C22DF45120047283C /* FavoriteDetailViewController.swift */; };
 		FFC8DA3F22DF46F40047283C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8DA3E22DF46F40047283C /* DetailViewController.swift */; };
+		FFCD1A6E22EB5BB0004F1DE1 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD987A122DE21580086C575 /* RecipleaseTests.swift */; };
 		FFD9878A22DE21570086C575 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9878922DE21570086C575 /* AppDelegate.swift */; };
 		FFD9878F22DE21570086C575 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD9878D22DE21570086C575 /* Main.storyboard */; };
 		FFD9879222DE21570086C575 /* FavoriteRecipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFD9879022DE21570086C575 /* FavoriteRecipe.xcdatamodeld */; };
 		FFD9879422DE21580086C575 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD9879322DE21580086C575 /* Assets.xcassets */; };
 		FFD9879722DE21580086C575 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD9879522DE21580086C575 /* LaunchScreen.storyboard */; };
-		FFD987A222DE21580086C575 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD987A122DE21580086C575 /* RecipleaseTests.swift */; };
 		FFEEFED022E0662700F19F50 /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEEFECF22E0662700F19F50 /* FavoriteRecipe.swift */; };
 		FFFE477B22E1ECB100DFBF50 /* EdamamRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFE477A22E1ECB100DFBF50 /* EdamamRecipes.swift */; };
 /* End PBXBuildFile section */
@@ -50,8 +50,8 @@
 		BD6754DE1404B2627F9C505E /* Pods-RecipleaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.release.xcconfig"; path = "Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		C2C04160BDC96BD10B99C6CF /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		DFB3D5B618AE685940F0E841 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF5D8AFB22E84B8A00821FFD /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
-		FF5D8AFC22E84B8A00821FFD /* RecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCell.xib; sourceTree = "<group>"; };
+		FF5D8AFB22E84B8A00821FFD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		FF7A235622DF77AC00194E54 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FF9F862522E0D2F40093C0EA /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				FFD9878D22DE21570086C575 /* Main.storyboard */,
-				FF5D8AFB22E84B8A00821FFD /* RecipeCell.swift */,
-				FF5D8AFC22E84B8A00821FFD /* RecipeCell.xib */,
+				FF5D8AFB22E84B8A00821FFD /* CustomCell.swift */,
+				FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF5D8AFE22E84B8A00821FFD /* RecipeCell.xib in Resources */,
+				FF5D8AFE22E84B8A00821FFD /* CustomCell.xib in Resources */,
 				FFD9879722DE21580086C575 /* LaunchScreen.storyboard in Resources */,
 				FF9F862622E0D2F40093C0EA /* ApiKeys.plist in Resources */,
 				FFD9879422DE21580086C575 /* Assets.xcassets in Resources */,
@@ -411,7 +411,7 @@
 				FF9F862C22E0D45E0093C0EA /* EdamamSession.swift in Sources */,
 				FFD9879222DE21570086C575 /* FavoriteRecipe.xcdatamodeld in Sources */,
 				FFC8DA3722DF42E90047283C /* UIViewController.swift in Sources */,
-				FF5D8AFD22E84B8A00821FFD /* RecipeCell.swift in Sources */,
+				FF5D8AFD22E84B8A00821FFD /* CustomCell.swift in Sources */,
 				FF7A235722DF77AC00194E54 /* TabBarViewController.swift in Sources */,
 				FFD9878A22DE21570086C575 /* AppDelegate.swift in Sources */,
 				FFC8DA3D22DF45120047283C /* FavoriteDetailViewController.swift in Sources */,
@@ -427,7 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD987A222DE21580086C575 /* RecipleaseTests.swift in Sources */,
+				FFCD1A6E22EB5BB0004F1DE1 /* RecipleaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
