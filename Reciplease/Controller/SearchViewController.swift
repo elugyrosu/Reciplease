@@ -15,24 +15,27 @@ class SearchViewController: UIViewController {
     var recipeListCount = 0
     var ingredientList = [String]()
     
-    @IBOutlet var ingredientListLabel: UILabel!
+    @IBOutlet var ingredientSearchTableView: UITableView!
     @IBOutlet var ingredientTextField: UITextField!
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var searchButton: UIButton!
     
     @IBAction func clearIngredientsButton(_ sender: UIButton) {
         self.ingredientList = [String]()
-        refreshIngredientList()
+        ingredientSearchTableView.reloadData()
     }
     
     @IBAction func addIngredientButton(_ sender: UIButton) {
         guard let ingredientToAdd = ingredientTextField.text else {return}
         if ingredientToAdd != "" {
             ingredientList.append(ingredientToAdd)
-            refreshIngredientList()
             self.ingredientTextField.text = ""
+            ingredientSearchTableView.reloadData()
         }
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
+      
         var ingredientsString = String()
         var i = 0
         for ingredient in ingredientList{
@@ -42,17 +45,24 @@ class SearchViewController: UIViewController {
             ingredientsString += ingredient
             i += 1
         }
-        print(ingredientsString)
         recipesCall(ingredients: ingredientsString)
+    }
+    
+    private func toggleActivityIndicator(shown: Bool){
+        activityIndicatorView.isHidden = !shown
+        searchButton.isHidden = shown
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshIngredientList()
+        activityIndicatorView.isHidden = true
+
     }
     private func recipesCall(ingredients: String){
+        toggleActivityIndicator(shown: true)
         edamamService.getRecipeList(ingredients: ingredients) { success, edamamRecipes in
+            self.toggleActivityIndicator(shown: false)
             if success {
                 guard let edamamRecipes = edamamRecipes else { return }
                 self.recipesList = edamamRecipes.hits
@@ -71,19 +81,13 @@ class SearchViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToTableView" {
-            let resultVC = segue.destination as! ResultTableViewController
+            guard let resultVC = segue.destination as? ResultTableViewController else{return}
             resultVC.recipesList = self.recipesList
         }
     }
-    
-   private func refreshIngredientList(){
-        var textToShow = ""
-        for ingredient in ingredientList{
-            textToShow += "- " + ingredient + "\n"
-        }
-        self.ingredientListLabel.text = textToShow
-    }
 }
+    
+
 
 extension SearchViewController: UITextFieldDelegate{
     @IBAction func dismissedKeyboard(_ sender: UITapGestureRecognizer) {
@@ -95,4 +99,19 @@ extension SearchViewController: UITextFieldDelegate{
         return true
     }
 
+}
+extension SearchViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ingredientList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientSearchCell", for: indexPath)
+
+        cell.textLabel?.text = "- " + ingredientList[indexPath.row]
+        
+        return cell
+    }
+    
+    
 }
