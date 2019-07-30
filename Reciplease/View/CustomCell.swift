@@ -32,9 +32,6 @@ class CustomCell: UITableViewCell {
                 timeLabelView.text = "- ⧖"
             }
             servingsLabelView.text = String(Int(recipe.yield)) + " x ☺︎"
-            guard let imageData = recipe.image.data else {return}
-            cellImageView.image = UIImage(data: imageData)
-            cellImageView.contentMode = .scaleAspectFill
             
             var healthLabelString = String()
             

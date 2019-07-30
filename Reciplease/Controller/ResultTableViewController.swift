@@ -11,6 +11,8 @@ import UIKit
 class ResultTableViewController: UITableViewController {
     
     var recipesImages = [UIImage]()
+    let imageCache = NSCache<NSString, UIImage>()
+
 
     
     @IBOutlet var resultTableView: UITableView!
@@ -42,17 +44,29 @@ class ResultTableViewController: UITableViewController {
         {
             guard let detailVC = segue.destination as? DetailViewController else {return}
             detailVC.recipe = self.recipe
-//            detailVC.view = self.view
 
         }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as? CustomCell else {return UITableViewCell()}
         let recipe = recipesList[indexPath.row].recipe
         cell.recipe = recipe
+        
+        if let cachedImage = imageCache.object(forKey: NSString(string: recipe.image)) {
+            cell.cellImageView.image = cachedImage
+        }else{
+            guard let imageData = recipe.image.data else {return cell}
 
+            guard let image = UIImage(data: imageData) else{return cell}
+            self.imageCache.setObject(image, forKey: NSString(string: recipe.image))
+
+            cell.cellImageView.image = image
+        }
+        cell.cellImageView.contentMode = .scaleAspectFill
+        
         return cell
     }
     
