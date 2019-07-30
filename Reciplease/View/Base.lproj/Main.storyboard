@@ -120,7 +120,7 @@
                                 <rect key="frame" x="8" y="235" width="304" height="165"/>
                                 <color key="backgroundColor" red="0.20472121239999999" green="0.1880749464" blue="0.18307939170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientCell" textLabel="jrH-cE-KMb" style="IBUITableViewCellStyleDefault" id="Rws-af-f5h">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" textLabel="jrH-cE-KMb" style="IBUITableViewCellStyleDefault" id="Rws-af-f5h">
                                         <rect key="frame" x="0.0" y="28" width="304" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rws-af-f5h" id="GT7-SH-qk2">
@@ -305,7 +305,7 @@
                                 <rect key="frame" x="8" y="123" width="304" height="292"/>
                                 <color key="backgroundColor" red="0.20472121239999999" green="0.1880749464" blue="0.18307939170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientSearchCell" textLabel="ygW-2k-THj" style="IBUITableViewCellStyleDefault" id="5Fk-5K-Va8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientSearchCell" textLabel="ygW-2k-THj" style="IBUITableViewCellStyleDefault" id="5Fk-5K-Va8">
                                         <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Fk-5K-Va8" id="Aeo-Pw-nU1">
