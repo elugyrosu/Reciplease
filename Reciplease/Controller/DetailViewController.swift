@@ -20,8 +20,58 @@ class DetailViewController: UIViewController {
     @IBOutlet var servingsLabelView: UILabel!
     @IBOutlet var timeLabelView: UILabel!
     
+    var favoriteList = FavoriteRecipe.fetchAll()
+    var isFavorite = false
     
+    @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
+    
+    @IBAction func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
+        if isFavorite == false{
+            let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
+            favorite.id = recipe?.shareAs
+            favorite.image = recipeImageView.image?.pngData()
+            favorite.label = recipe?.label
+            favorite.totalTime = timeLabelView.text
+            favorite.yield = servingsLabelView.text
+            favorite.url = recipe?.source
+            guard let ingredients = recipe?.ingredientLines as [NSString]? else{return}
+            favorite.ingredients = ingredients
+            
+            try? AppDelegate.viewContext.save()
+            checkIfFavorite()
+            
+        }else{
+            for favorite in favoriteList{
+                if favorite.id == recipe?.shareAs {
+                    AppDelegate.viewContext.delete(favorite)
+                    isFavorite = false
+                    checkIfFavorite()
+                }
+            }
+        }
+    }
+    
+    func checkIfFavorite(){
+        favoriteList = FavoriteRecipe.fetchAll()
+        for favorite in favoriteList{
+            if favorite.id == recipe?.shareAs{
+                isFavorite = true
+            }
+        }
+        if isFavorite == true{
+            favoriteBarButtonItem.image = #imageLiteral(resourceName: "FullStar")
 
+        }else{
+            favoriteBarButtonItem.image = #imageLiteral(resourceName: "EmptyStar")
+        }
+    }
+    
+    @IBAction func getDirectionsButton(_ sender: UIButton) {
+        guard let source = recipe?.source else {return}
+        guard let url = URL(string: source)else{return}
+        UIApplication.shared.open(url)
+    }
+    
     
     var recipe: Recipe?
 
@@ -32,12 +82,8 @@ class DetailViewController: UIViewController {
         let greyColor = #colorLiteral(red: 0.2047212124, green: 0.1880749464, blue: 0.1830793917, alpha: 1)
         gradientLayer.colors = [UIColor.clear.cgColor, greyColor.cgColor]
         
-        
         self.gradientView.layer.addSublayer(gradientLayer)
-        
         self.titleLabel.superview?.bringSubviewToFront(titleLabel)
-  
-        
     }
     
 
@@ -46,6 +92,7 @@ class DetailViewController: UIViewController {
         
         updateViews()
         createGradientLayer()
+        checkIfFavorite()
         // Do any additional setup after loading the view.
     }
     

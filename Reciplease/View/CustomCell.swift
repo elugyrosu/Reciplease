@@ -26,26 +26,31 @@ class CustomCell: UITableViewCell {
             guard let recipe = recipe else{return}
             titleLabelView.text = recipe.label
             if recipe.totalTime != 0 {
-
                 timeLabelView.text = String(recipe.totalTime) + " min ⧖"
             }else{
                 timeLabelView.text = "- ⧖"
             }
             servingsLabelView.text = String(Int(recipe.yield)) + " x ☺︎"
-            
             var healthLabelString = String()
-            
             for label in recipe.healthLabels{
                 healthLabelString += label + " ✔︎  "
             }
             healthLabelView.text = healthLabelString
         }
     }
+    var favoriteRecipe: FavoriteRecipe?{
+        didSet {
+            guard let recipe = favoriteRecipe else{return}
+            titleLabelView.text = recipe.label
+            timeLabelView.text = recipe.totalTime
+            servingsLabelView.text = recipe.yield
+            healthLabelView.text = recipe.healthLabel
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         createGradientLayer()
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

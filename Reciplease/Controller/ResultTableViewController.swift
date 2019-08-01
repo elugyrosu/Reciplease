@@ -10,12 +10,10 @@ import UIKit
 
 class ResultTableViewController: UITableViewController {
     
-    var recipesImages = [UIImage]()
     let imageCache = NSCache<NSString, UIImage>()
 
 
     
-    @IBOutlet var resultTableView: UITableView!
     var recipesList = [Hit]()
     var recipe: Recipe?
     

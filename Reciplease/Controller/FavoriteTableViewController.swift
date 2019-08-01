@@ -10,30 +10,68 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
     
+    
     var recipeList = FavoriteRecipe.fetchAll()
+    var favoriteRecipe: FavoriteRecipe?
+    let imageCache = NSCache<NSString, UIImage>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.registerTableViewCells()
+        updateData()
+   
+    }
+    
+    func updateData(){
+        recipeList = FavoriteRecipe.fetchAll()
+        tableView.reloadData()
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    
+    func registerTableViewCells(){
+        let recipeCell = UINib(nibName: "CustomCell", bundle: nil)
+        self.tableView.register(recipeCell, forCellReuseIdentifier: "CustomCell")
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return recipeList.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.favoriteRecipe = recipeList[indexPath.row]
+        performSegue(withIdentifier: "segueToFavoriteDetail", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToFavoriteDetail"
+        {
+            guard let detailVC = segue.destination as? FavoriteDetailViewController else {return}
+            detailVC.favoriteRecipe = self.favoriteRecipe
+            
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let recipeCell = tableView.dequeueReusableCell(withIdentifier: "FavoriteRecipe", for: indexPath)
-        recipeCell.textLabel?.text = recipeList[indexPath.row].label
-        return recipeCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as? CustomCell else {return UITableViewCell()}
+        let favoriteRecipe = recipeList[indexPath.row]
+        cell.favoriteRecipe = favoriteRecipe
+        
+        guard let id = favoriteRecipe.id else{return cell}
+        if let cachedImage = imageCache.object(forKey: NSString(string: id)) {
+            cell.cellImageView.image = cachedImage
+        }else{
+            guard let imageData = favoriteRecipe.image else {return cell}
+            guard let image = UIImage.init(data: imageData) else {return cell}
+            
+            self.imageCache.setObject(image, forKey: NSString(string: id))
+            cell.cellImageView.image = image
+        }
+        cell.cellImageView.contentMode = .scaleAspectFill
+
+        return cell
     }
 
 
