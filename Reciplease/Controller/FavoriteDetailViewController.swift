@@ -21,17 +21,46 @@ class FavoriteDetailViewController: UIViewController {
     @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
     
     @IBAction func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Caution", message: "Do you really want to remove this recipe from your favorite list ?", preferredStyle: .alert)
+
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            print("Ok button tapped")
+            self.deleteRecipe()
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        
+        //Add OK and Cancel button to dialog message
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(alertController, animated: true, completion: nil)
+    
+    }
+    
+    func deleteRecipe(){
+        for favorite in favoriteList{
+            if favorite.id == favoriteRecipe?.id {
+                AppDelegate.viewContext.delete(favorite)
+                
+            }
+        }
     }
     
     var favoriteList = FavoriteRecipe.fetchAll()
     
     var favoriteRecipe: FavoriteRecipe?
 
-    @IBAction func handleGedirectionButton(_ sender: UIButton) {
+    @IBAction func handleGeDirectionButton(_ sender: UIButton) {
         guard let source = favoriteRecipe?.url else {return}
         guard let url = URL(string: source)else{return}
         UIApplication.shared.open(url)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,12 +84,15 @@ extension FavoriteDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recipe = self.favoriteRecipe else {return 0}
-        return recipe.ingredients.count
+        guard let ingredients = recipe.ingredients else{return 0}
+        return ingredients.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteIngredientCell", for: indexPath)
         guard let recipe = self.favoriteRecipe else {return UITableViewCell()}
-        let ingredient = recipe.ingredients[indexPath.row]
+        guard let ingredients = recipe.ingredients else{return UITableViewCell()}
+
+        let ingredient = ingredients[indexPath.row]
         cell.textLabel?.text = "- " + (ingredient as String)
         
         return cell

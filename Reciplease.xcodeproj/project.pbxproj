@@ -11,6 +11,7 @@
 		5C9368A8EFA9AC4A2C1E56FE /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2426D0ED44849F76328BA6C4 /* Pods_RecipleaseTests.framework */; };
 		FF5D8AFD22E84B8A00821FFD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D8AFB22E84B8A00821FFD /* CustomCell.swift */; };
 		FF5D8AFE22E84B8A00821FFD /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */; };
+		FF79FB3A22F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF79FB3822F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld */; };
 		FF7A235522DF6A0800194E54 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */; };
 		FF7A235722DF77AC00194E54 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A235622DF77AC00194E54 /* TabBarViewController.swift */; };
 		FF9F862622E0D2F40093C0EA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9F862522E0D2F40093C0EA /* ApiKeys.plist */; };
@@ -26,7 +27,6 @@
 		FFCD1A6E22EB5BB0004F1DE1 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD987A122DE21580086C575 /* RecipleaseTests.swift */; };
 		FFD9878A22DE21570086C575 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9878922DE21570086C575 /* AppDelegate.swift */; };
 		FFD9878F22DE21570086C575 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD9878D22DE21570086C575 /* Main.storyboard */; };
-		FFD9879222DE21570086C575 /* FavoriteRecipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFD9879022DE21570086C575 /* FavoriteRecipe.xcdatamodeld */; };
 		FFD9879422DE21580086C575 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD9879322DE21580086C575 /* Assets.xcassets */; };
 		FFD9879722DE21580086C575 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD9879522DE21580086C575 /* LaunchScreen.storyboard */; };
 		FFEEFED022E0662700F19F50 /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEEFECF22E0662700F19F50 /* FavoriteRecipe.swift */; };
@@ -52,6 +52,7 @@
 		DFB3D5B618AE685940F0E841 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5D8AFB22E84B8A00821FFD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		FF79FB3922F4AD47005DB29C /* FavoriteRecipe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteRecipe.xcdatamodel; sourceTree = "<group>"; };
 		FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		FF7A235622DF77AC00194E54 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FF9F862522E0D2F40093C0EA /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		FFD9878622DE21570086C575 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD9878922DE21570086C575 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD9878E22DE21570086C575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFD9879122DE21570086C575 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		FFD9879322DE21580086C575 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFD9879622DE21580086C575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFD9879822DE21580086C575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,12 +196,12 @@
 		FFD987AE22DE24020086C575 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FFD9879022DE21570086C575 /* FavoriteRecipe.xcdatamodeld */,
 				FFEEFECF22E0662700F19F50 /* FavoriteRecipe.swift */,
 				FFFE477A22E1ECB100DFBF50 /* EdamamRecipes.swift */,
 				FF9F862922E0D3B10093C0EA /* EdamamService.swift */,
 				FF9F862B22E0D45E0093C0EA /* EdamamSession.swift */,
 				FF9F862D22E0D4710093C0EA /* EdamamProtocol.swift */,
+				FF79FB3822F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,13 +409,13 @@
 				FF9F862822E0D3370093C0EA /* ApiKeysManager.swift in Sources */,
 				FF7A235522DF6A0800194E54 /* FavoriteTableViewController.swift in Sources */,
 				FF9F862C22E0D45E0093C0EA /* EdamamSession.swift in Sources */,
-				FFD9879222DE21570086C575 /* FavoriteRecipe.xcdatamodeld in Sources */,
 				FFC8DA3722DF42E90047283C /* UIViewController.swift in Sources */,
 				FF5D8AFD22E84B8A00821FFD /* CustomCell.swift in Sources */,
 				FF7A235722DF77AC00194E54 /* TabBarViewController.swift in Sources */,
 				FFD9878A22DE21570086C575 /* AppDelegate.swift in Sources */,
 				FFC8DA3D22DF45120047283C /* FavoriteDetailViewController.swift in Sources */,
 				FF9F862A22E0D3B10093C0EA /* EdamamService.swift in Sources */,
+				FF79FB3A22F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld in Sources */,
 				FFC8DA3922DF44CB0047283C /* ResultTableViewController.swift in Sources */,
 				FFC8DA3F22DF46F40047283C /* DetailViewController.swift in Sources */,
 				FF9F862E22E0D4710093C0EA /* EdamamProtocol.swift in Sources */,
@@ -589,12 +589,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FFD9879022DE21570086C575 /* FavoriteRecipe.xcdatamodeld */ = {
+		FF79FB3822F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FFD9879122DE21570086C575 /* Reciplease.xcdatamodel */,
+				FF79FB3922F4AD47005DB29C /* FavoriteRecipe.xcdatamodel */,
 			);
-			currentVersion = FFD9879122DE21570086C575 /* Reciplease.xcdatamodel */;
+			currentVersion = FF79FB3922F4AD47005DB29C /* FavoriteRecipe.xcdatamodel */;
 			path = FavoriteRecipe.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

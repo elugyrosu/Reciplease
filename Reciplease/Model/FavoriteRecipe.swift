@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class FavoriteRecipe: NSManagedObject {
-    @NSManaged var ingredients: [NSString]
     static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [FavoriteRecipe] {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "label", ascending: true)]
