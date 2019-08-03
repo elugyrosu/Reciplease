@@ -17,6 +17,7 @@ class FavoriteTableViewController: UITableViewController {
 
 
     override func viewWillAppear(_ animated: Bool) {
+        tableView.tableFooterView = UIView()
         super.viewWillAppear(animated)
         self.registerTableViewCells()
         updateData()
@@ -35,7 +36,6 @@ class FavoriteTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return recipeList.count
     }
     

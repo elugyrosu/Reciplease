@@ -34,6 +34,12 @@ class DetailViewController: UIViewController {
             favorite.totalTime = timeLabelView.text
             favorite.yield = servingsLabelView.text
             favorite.url = recipe?.source
+            var healthLabelString = String()
+            guard let healthLabels = recipe?.healthLabels else{return}
+            for label in healthLabels{
+                healthLabelString += label + " ✔︎  "
+            }
+            favorite.healthLabel = healthLabelString
             guard let ingredients = recipe?.ingredientLines as [NSString]? else{return}
             favorite.ingredients = ingredients
             
@@ -59,10 +65,10 @@ class DetailViewController: UIViewController {
             }
         }
         if isFavorite == true{
-            favoriteBarButtonItem.image = #imageLiteral(resourceName: "FullStar")
+            favoriteBarButtonItem.image = #imageLiteral(resourceName: "Full star")
 
         }else{
-            favoriteBarButtonItem.image = #imageLiteral(resourceName: "EmptyStar")
+            favoriteBarButtonItem.image = #imageLiteral(resourceName: "Empty Star")
         }
     }
     

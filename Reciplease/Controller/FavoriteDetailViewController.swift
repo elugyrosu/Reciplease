@@ -23,21 +23,18 @@ class FavoriteDetailViewController: UIViewController {
     @IBAction func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Caution", message: "Do you really want to remove this recipe from your favorite list ?", preferredStyle: .alert)
 
-        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
             print("Ok button tapped")
             self.deleteRecipe()
+            self.navigationController?.popViewController(animated: true)
+
         })
         
-        // Create Cancel button with action handlder
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            print("Cancel button tapped")
-        }
+        let cancel = UIAlertAction(title: "No", style: .cancel)
         
-        //Add OK and Cancel button to dialog message
         alertController.addAction(ok)
         alertController.addAction(cancel)
-        
-        // Present dialog message to user
+
         self.present(alertController, animated: true, completion: nil)
     
     }
@@ -63,8 +60,7 @@ class FavoriteDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     private func updateViews(){
@@ -76,10 +72,8 @@ class FavoriteDetailViewController: UIViewController {
         recipeImageView.image = UIImage(data: imageData)
         recipeImageView.contentMode = .scaleAspectFill
     }
-    
-
-
 }
+
 extension FavoriteDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
