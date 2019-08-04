@@ -10,12 +10,12 @@ import Foundation
 import Alamofire
 
 protocol EdamamProtocol{
-    var urlStringApi: String { get }    // demander pourquoi ?
+    var urlStringApi: String { get }
     func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> Void)
 }
+
 extension EdamamProtocol{
     var urlStringApi: String{
-//        let ingredients = "Chicken"
         return "https://api.edamam.com/search?app_id=3e840b64&app_key=\(ApiKeysManager.edamamApiKey)&to=100&q="
     }
 }

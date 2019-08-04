@@ -19,7 +19,7 @@ final class ApiKeysManager{
         return NSDictionary(contentsOfFile: path) ?? [:]
         
     }()
-
+    
     static var edamamApiKey: String{
         return apiKeysPlist["edamamApiKey"] as? String ?? String()
     }

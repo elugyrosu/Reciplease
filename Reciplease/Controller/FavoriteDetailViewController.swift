@@ -10,57 +10,51 @@ import UIKit
 
 class FavoriteDetailViewController: UIViewController {
     
+    //MARK: Properties
+    var favoriteList = FavoriteRecipe.fetchAll()
+    var favoriteRecipe: FavoriteRecipe?
+    
+    // MARK: Outlets
     @IBOutlet var recipeImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
-    
     @IBOutlet var gradientView: UIView!
-    
     @IBOutlet var servingsLabelView: UILabel!
     @IBOutlet var timeLabelView: UILabel!
-    
     @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
     
+    // MARK: - Action Button Outlets
     @IBAction func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Caution", message: "Do you really want to remove this recipe from your favorite list ?", preferredStyle: .alert)
-
         let ok = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
             print("Ok button tapped")
             self.deleteRecipe()
             self.navigationController?.popViewController(animated: true)
-
         })
-        
         let cancel = UIAlertAction(title: "No", style: .cancel)
-        
         alertController.addAction(ok)
         alertController.addAction(cancel)
-
         self.present(alertController, animated: true, completion: nil)
-    
     }
     
-    func deleteRecipe(){
-        for favorite in favoriteList{
-            if favorite.id == favoriteRecipe?.id {
-                AppDelegate.viewContext.delete(favorite)
-                
-            }
-        }
-    }
-    
-    var favoriteList = FavoriteRecipe.fetchAll()
-    
-    var favoriteRecipe: FavoriteRecipe?
-
     @IBAction func handleGeDirectionButton(_ sender: UIButton) {
         guard let source = favoriteRecipe?.url else {return}
         guard let url = URL(string: source)else{return}
         UIApplication.shared.open(url)
     }
-
+    
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+    }
+    
+    //MARK: - Class Methods
+    private func deleteRecipe(){
+        for favorite in favoriteList{
+            if favorite.id == favoriteRecipe?.id {
+                AppDelegate.viewContext.delete(favorite)
+            }
+        }
     }
     
     private func updateViews(){
@@ -74,6 +68,7 @@ class FavoriteDetailViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension FavoriteDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,16 +76,13 @@ extension FavoriteDetailViewController: UITableViewDataSource{
         guard let ingredients = recipe.ingredients else{return 0}
         return ingredients.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteIngredientCell", for: indexPath)
         guard let recipe = self.favoriteRecipe else {return UITableViewCell()}
-        guard let ingredients = recipe.ingredients else{return UITableViewCell()}
-
+        guard let ingredients = recipe.ingredients else {return UITableViewCell()}
         let ingredient = ingredients[indexPath.row]
         cell.textLabel?.text = "- " + (ingredient as String)
-        
         return cell
     }
-    
-    
 }

@@ -13,12 +13,12 @@
 		FF5D8AFE22E84B8A00821FFD /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */; };
 		FF79FB3A22F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF79FB3822F4AD47005DB29C /* FavoriteRecipe.xcdatamodeld */; };
 		FF7A235522DF6A0800194E54 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */; };
-		FF7A235722DF77AC00194E54 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A235622DF77AC00194E54 /* TabBarViewController.swift */; };
 		FF9F862622E0D2F40093C0EA /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF9F862522E0D2F40093C0EA /* ApiKeys.plist */; };
 		FF9F862822E0D3370093C0EA /* ApiKeysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F862722E0D3370093C0EA /* ApiKeysManager.swift */; };
 		FF9F862A22E0D3B10093C0EA /* EdamamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F862922E0D3B10093C0EA /* EdamamService.swift */; };
 		FF9F862C22E0D45E0093C0EA /* EdamamSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F862B22E0D45E0093C0EA /* EdamamSession.swift */; };
 		FF9F862E22E0D4710093C0EA /* EdamamProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F862D22E0D4710093C0EA /* EdamamProtocol.swift */; };
+		FFA388F522F724FA00490EAF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA388F422F724FA00490EAF /* String.swift */; };
 		FFC8DA3722DF42E90047283C /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8DA3622DF42E90047283C /* UIViewController.swift */; };
 		FFC8DA3922DF44CB0047283C /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8DA3822DF44CB0047283C /* ResultTableViewController.swift */; };
 		FFC8DA3B22DF44FE0047283C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC8DA3A22DF44FE0047283C /* SearchViewController.swift */; };
@@ -54,12 +54,12 @@
 		FF5D8AFC22E84B8A00821FFD /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		FF79FB3922F4AD47005DB29C /* FavoriteRecipe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteRecipe.xcdatamodel; sourceTree = "<group>"; };
 		FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
-		FF7A235622DF77AC00194E54 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FF9F862522E0D2F40093C0EA /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 		FF9F862722E0D3370093C0EA /* ApiKeysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysManager.swift; sourceTree = "<group>"; };
 		FF9F862922E0D3B10093C0EA /* EdamamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamService.swift; sourceTree = "<group>"; };
 		FF9F862B22E0D45E0093C0EA /* EdamamSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamSession.swift; sourceTree = "<group>"; };
 		FF9F862D22E0D4710093C0EA /* EdamamProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamProtocol.swift; sourceTree = "<group>"; };
+		FFA388F422F724FA00490EAF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		FFC8DA3622DF42E90047283C /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FFC8DA3822DF44CB0047283C /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		FFC8DA3A22DF44FE0047283C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				FFC8DA3622DF42E90047283C /* UIViewController.swift */,
+				FFA388F422F724FA00490EAF /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 				FFC8DA3E22DF46F40047283C /* DetailViewController.swift */,
 				FF7A235422DF6A0800194E54 /* FavoriteTableViewController.swift */,
 				FFC8DA3C22DF45120047283C /* FavoriteDetailViewController.swift */,
-				FF7A235622DF77AC00194E54 /* TabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -411,7 +411,6 @@
 				FF9F862C22E0D45E0093C0EA /* EdamamSession.swift in Sources */,
 				FFC8DA3722DF42E90047283C /* UIViewController.swift in Sources */,
 				FF5D8AFD22E84B8A00821FFD /* CustomCell.swift in Sources */,
-				FF7A235722DF77AC00194E54 /* TabBarViewController.swift in Sources */,
 				FFD9878A22DE21570086C575 /* AppDelegate.swift in Sources */,
 				FFC8DA3D22DF45120047283C /* FavoriteDetailViewController.swift in Sources */,
 				FF9F862A22E0D3B10093C0EA /* EdamamService.swift in Sources */,
@@ -419,6 +418,7 @@
 				FFC8DA3922DF44CB0047283C /* ResultTableViewController.swift in Sources */,
 				FFC8DA3F22DF46F40047283C /* DetailViewController.swift in Sources */,
 				FF9F862E22E0D4710093C0EA /* EdamamProtocol.swift in Sources */,
+				FFA388F522F724FA00490EAF /* String.swift in Sources */,
 				FFEEFED022E0662700F19F50 /* FavoriteRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

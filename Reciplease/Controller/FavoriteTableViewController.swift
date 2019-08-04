@@ -10,48 +10,38 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
     
-    
+    //MARK: - Properties
     var recipeList = FavoriteRecipe.fetchAll()
     var favoriteRecipe: FavoriteRecipe?
     let imageCache = NSCache<NSString, UIImage>()
-
-
+    
+    //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         tableView.tableFooterView = UIView()
         super.viewWillAppear(animated)
         self.registerTableViewCells()
         updateData()
-   
     }
     
-    func updateData(){
+    //MARK: - Class Methods
+    private func updateData(){
         recipeList = FavoriteRecipe.fetchAll()
         tableView.reloadData()
     }
-
     
-    func registerTableViewCells(){
+    //MARK: - TableView Configuration
+    private func registerTableViewCells(){
         let recipeCell = UINib(nibName: "CustomCell", bundle: nil)
         self.tableView.register(recipeCell, forCellReuseIdentifier: "CustomCell")
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipeList.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.favoriteRecipe = recipeList[indexPath.row]
         performSegue(withIdentifier: "segueToFavoriteDetail", sender: indexPath)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToFavoriteDetail"
-        {
-            guard let detailVC = segue.destination as? FavoriteDetailViewController else {return}
-            detailVC.favoriteRecipe = self.favoriteRecipe
-            
-        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,13 +60,10 @@ class FavoriteTableViewController: UITableViewController {
             cell.cellImageView.image = image
         }
         cell.cellImageView.contentMode = .scaleAspectFill
-
         return cell
     }
-
-
-
-  override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = "Add recipes in the list"
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -85,8 +72,16 @@ class FavoriteTableViewController: UITableViewController {
         return label
     }
     
-   override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return recipeList.isEmpty ? 200 : 0
+    }
+    
+    // MARK: - Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToFavoriteDetail" {
+            guard let detailVC = segue.destination as? FavoriteDetailViewController else {return}
+            detailVC.favoriteRecipe = self.favoriteRecipe
+        }
     }
 }
 

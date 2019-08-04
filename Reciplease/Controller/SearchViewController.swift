@@ -9,17 +9,26 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
+    // MARK: - Properties
     let edamamService = EdamamService()
     var recipesList = [Hit]()
     var recipeListCount = 0
     var ingredientList = [String]()
     
+    // MARK: - Outlets
     @IBOutlet var ingredientSearchTableView: UITableView!
     @IBOutlet var ingredientTextField: UITextField!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet var searchButton: UIButton!
     
+    //MARK: - View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activityIndicatorView.isHidden = true
+    }
+    
+    // MARK: - Action Button Outlets
     @IBAction func clearIngredientsButton(_ sender: UIButton) {
         self.ingredientList = [String]()
         ingredientSearchTableView.reloadData()
@@ -35,7 +44,6 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
-      
         var ingredientsString = String()
         var i = 0
         for ingredient in ingredientList{
@@ -48,17 +56,12 @@ class SearchViewController: UIViewController {
         recipesCall(ingredients: ingredientsString)
     }
     
+    //MARK: - Class Methods
     private func toggleActivityIndicator(shown: Bool){
         activityIndicatorView.isHidden = !shown
         searchButton.isHidden = shown
     }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        activityIndicatorView.isHidden = true
-
-    }
+    
     private func recipesCall(ingredients: String){
         toggleActivityIndicator(shown: true)
         edamamService.getRecipeList(ingredients: ingredients) { success, edamamRecipes in
@@ -78,7 +81,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToTableView" {
             guard let resultVC = segue.destination as? ResultTableViewController else{return}
@@ -86,35 +89,33 @@ class SearchViewController: UIViewController {
         }
     }
 }
-    
 
-
+// MARK: - UITextFieldDelegate
 extension SearchViewController: UITextFieldDelegate{
     @IBAction func dismissedKeyboard(_ sender: UITapGestureRecognizer) {
         ingredientTextField.endEditing(true)
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
 }
+
+// MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource{
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientSearchCell", for: indexPath)
-
         cell.textLabel?.text = "- " + ingredientList[indexPath.row]
-        
         return cell
     }
-    
-    
 }
+
+// MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
