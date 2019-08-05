@@ -11,24 +11,28 @@ import UIKit
 class SearchViewController: UIViewController {
     
     // MARK: - Properties
-    let edamamService = EdamamService()
-    var recipesList = [Hit]()
-    var recipeListCount = 0
-    var ingredientList = [String]()
+    
+    private let edamamService = EdamamService()
+    private var recipesList = [Hit]()
+    private var recipeListCount = 0
+    private var ingredientList = [String]()
     
     // MARK: - Outlets
-    @IBOutlet var ingredientSearchTableView: UITableView!
-    @IBOutlet var ingredientTextField: UITextField!
-    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet var searchButton: UIButton!
     
-    //MARK: - View Life Cycle
+    @IBOutlet private var ingredientSearchTableView: UITableView!
+    @IBOutlet private var ingredientTextField: UITextField!
+    @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private var searchButton: UIButton!
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.isHidden = true
     }
     
     // MARK: - Action Button Outlets
+    
     @IBAction func clearIngredientsButton(_ sender: UIButton) {
         self.ingredientList = [String]()
         ingredientSearchTableView.reloadData()
@@ -56,7 +60,8 @@ class SearchViewController: UIViewController {
         recipesCall(ingredients: ingredientsString)
     }
     
-    //MARK: - Class Methods
+    // MARK: - Class Methods
+    
     private func toggleActivityIndicator(shown: Bool){
         activityIndicatorView.isHidden = !shown
         searchButton.isHidden = shown
@@ -82,6 +87,7 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToTableView" {
             guard let resultVC = segue.destination as? ResultTableViewController else{return}
@@ -103,6 +109,7 @@ extension SearchViewController: UITextFieldDelegate{
 }
 
 // MARK: - UITableViewDataSource
+
 extension SearchViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientList.count
@@ -116,6 +123,7 @@ extension SearchViewController: UITableViewDataSource{
 }
 
 // MARK: - UITableViewDelegate
+
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{

@@ -10,18 +10,21 @@ import UIKit
 
 class ResultTableViewController: UITableViewController {
     
-    //MARK: Properties
-    let imageCache = NSCache<NSString, UIImage>()
+    // MARK: Properties
+    
+    private let imageCache = NSCache<NSString, UIImage>()
     var recipesList = [Hit]()
     var recipe: Recipe?
     
-    //MARK: - View Life Cycle
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCells()
     }
     
-    //MARK: - TableView
+    // MARK: - TableView
+    
     private func registerTableViewCells(){
         let recipeCell = UINib(nibName: "CustomCell", bundle: nil)
         self.tableView.register(recipeCell, forCellReuseIdentifier: "CustomCell")
@@ -49,6 +52,7 @@ class ResultTableViewController: UITableViewController {
         cell.recipe = recipe
         
         // Image cache manager
+        
         if let cachedImage = imageCache.object(forKey: NSString(string: recipe.image)) {
             cell.cellImageView.image = cachedImage
         }else{

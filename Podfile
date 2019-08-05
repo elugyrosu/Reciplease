@@ -5,11 +5,11 @@ target 'Reciplease' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Alamofire', '~> 4.7'
+  pod 'Alamofire', '4.8.2'
 
   target 'RecipleaseTests' do
     inherit! :search_paths
-    pod 'Alamofire', '~> 4.7'
+    pod 'Alamofire', '4.8.2'
   end
 
 end

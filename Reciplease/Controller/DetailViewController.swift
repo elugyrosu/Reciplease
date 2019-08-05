@@ -10,67 +10,54 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    //MARK: - Properties
+    // MARK: - Properties
+    
     var recipe: Recipe?
-    var favoriteList = FavoriteRecipe.fetchAll()
-    var isFavorite = false
     
     // MARK: - Outlets
-    @IBOutlet var recipeImageView: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var gradientView: UIView!
-    @IBOutlet var servingsLabelView: UILabel!
-    @IBOutlet var timeLabelView: UILabel!
-    @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
     
-    //MARK: - View Life Cycle
+    @IBOutlet private var recipeImageView: UIImageView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var gradientView: UIView!
+    @IBOutlet private var servingsLabelView: UILabel!
+    @IBOutlet private var timeLabelView: UILabel!
+    @IBOutlet private var favoriteBarButtonItem: UIBarButtonItem!
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         createGradientLayer()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         checkIfFavorite()
     }
     
     // MARK: - Action Button Outlets
+    
     @IBAction func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
-        if isFavorite == false{
-            let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
-            favorite.id = recipe?.shareAs
-            favorite.image = recipeImageView.image?.pngData()
-            favorite.label = recipe?.label
-            favorite.totalTime = timeLabelView.text
-            favorite.yield = servingsLabelView.text
-            favorite.url = recipe?.source
-            var healthLabelString = String()
-            guard let healthLabels = recipe?.healthLabels else{return}
-            for label in healthLabels{
-                healthLabelString += label + " ✔︎  "
-            }
-            favorite.healthLabel = healthLabelString
-            guard let ingredients = recipe?.ingredientLines as [NSString]? else{return}
-            favorite.ingredients = ingredients
-            
-            try? AppDelegate.viewContext.save()
-            checkIfFavorite()
-            
+        guard let id = recipe?.shareAs else {return}
+        
+        if FavoriteRecipe.checkIfAlreadyExist(recipeId: id) == true{
+            FavoriteRecipe.deleteRecipe(recipeId: id)
         }else{
-            for favorite in favoriteList{
-                if favorite.id == recipe?.shareAs {
-                    AppDelegate.viewContext.delete(favorite)
-                    isFavorite = false
-                    checkIfFavorite()
-                }
-            }
+            guard let favoriteRecipe = recipe else{return}
+            FavoriteRecipe.addRecipe(recipe: favoriteRecipe)
         }
+        checkIfFavorite()
     }
     
     @IBAction func getDirectionsButton(_ sender: UIButton) {
-        guard let source = recipe?.source else {return}
-        guard let url = URL(string: source)else{return}
+        guard let urlString = recipe?.url else {return}
+        guard let url = URL(string: urlString)else{return}
         UIApplication.shared.open(url)
     }
     
-    //MARK: - Class Methods
+    // MARK: - Class Methods
+    
     private func updateViews(){
         guard let recipe = recipe else{return}
         titleLabel.text = recipe.label
@@ -86,13 +73,10 @@ class DetailViewController: UIViewController {
     }
     
     private func checkIfFavorite(){
-        favoriteList = FavoriteRecipe.fetchAll()
-        for favorite in favoriteList{
-            if favorite.id == recipe?.shareAs{
-                isFavorite = true
-            }
-        }
-        if isFavorite == true{
+        guard let recipe = recipe else {return}
+        let id = recipe.shareAs
+      
+        if FavoriteRecipe.checkIfAlreadyExist(recipeId: id) == true{
             favoriteBarButtonItem.image = #imageLiteral(resourceName: "Full star")
         }else{
             favoriteBarButtonItem.image = #imageLiteral(resourceName: "Empty Star")
@@ -110,6 +94,7 @@ class DetailViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
+
 extension DetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recipe = self.recipe else {return 0}

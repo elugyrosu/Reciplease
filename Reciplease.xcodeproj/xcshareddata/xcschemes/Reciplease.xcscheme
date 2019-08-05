@@ -26,13 +26,14 @@
       buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FFD9879C22DE21580086C575"
+               BlueprintIdentifier = "FF6D183D22F8473D007CEE87"
                BuildableName = "RecipleaseTests.xctest"
                BlueprintName = "RecipleaseTests"
                ReferencedContainer = "container:Reciplease.xcodeproj">

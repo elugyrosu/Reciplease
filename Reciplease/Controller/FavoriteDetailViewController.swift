@@ -8,54 +8,53 @@
 
 import UIKit
 
-class FavoriteDetailViewController: UIViewController {
+final class FavoriteDetailViewController: UIViewController {
     
-    //MARK: Properties
-    var favoriteList = FavoriteRecipe.fetchAll()
+    // MARK: Properties
+    
+    private var favoriteList = FavoriteRecipe.fetchAll()
     var favoriteRecipe: FavoriteRecipe?
     
     // MARK: Outlets
-    @IBOutlet var recipeImageView: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var gradientView: UIView!
-    @IBOutlet var servingsLabelView: UILabel!
-    @IBOutlet var timeLabelView: UILabel!
-    @IBOutlet var favoriteBarButtonItem: UIBarButtonItem!
+    
+    @IBOutlet private var recipeImageView: UIImageView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var gradientView: UIView!
+    @IBOutlet private var servingsLabelView: UILabel!
+    @IBOutlet private var timeLabelView: UILabel!
+    @IBOutlet private var favoriteBarButtonItem: UIBarButtonItem!
     
     // MARK: - Action Button Outlets
-    @IBAction func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
+    
+    @IBAction private func handleFavoriteBarButtonItem(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Caution", message: "Do you really want to remove this recipe from your favorite list ?", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
             print("Ok button tapped")
-            self.deleteRecipe()
+            guard let recipe  = self.favoriteRecipe else{return}
+            guard let id = recipe.id else{return}
+            FavoriteRecipe.deleteRecipe(recipeId: id)
             self.navigationController?.popViewController(animated: true)
         })
         let cancel = UIAlertAction(title: "No", style: .cancel)
         alertController.addAction(ok)
         alertController.addAction(cancel)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func handleGeDirectionButton(_ sender: UIButton) {
-        guard let source = favoriteRecipe?.url else {return}
-        guard let url = URL(string: source)else{return}
+        guard let urlString = favoriteRecipe?.url else {return}
+        guard let url = URL(string: urlString)else{return}
         UIApplication.shared.open(url)
     }
     
-    //MARK: - View Life Cycle
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
     
-    //MARK: - Class Methods
-    private func deleteRecipe(){
-        for favorite in favoriteList{
-            if favorite.id == favoriteRecipe?.id {
-                AppDelegate.viewContext.delete(favorite)
-            }
-        }
-    }
+    // MARK: - Class Methods
     
     private func updateViews(){
         guard let recipe = favoriteRecipe else{return}
@@ -69,6 +68,7 @@ class FavoriteDetailViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
+
 extension FavoriteDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -10,12 +10,15 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
     
-    //MARK: - Properties
-    var recipeList = FavoriteRecipe.fetchAll()
-    var favoriteRecipe: FavoriteRecipe?
-    let imageCache = NSCache<NSString, UIImage>()
+    // MARK: - Properties
     
-    //MARK: - View Life Cycle
+    private var recipeList = FavoriteRecipe.fetchAll()
+    private let imageCache = NSCache<NSString, UIImage>()
+    var favoriteRecipe: FavoriteRecipe?
+
+    
+    // MARK: - View Life Cycle
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.tableFooterView = UIView()
         super.viewWillAppear(animated)
@@ -23,13 +26,15 @@ class FavoriteTableViewController: UITableViewController {
         updateData()
     }
     
-    //MARK: - Class Methods
+    // MARK: - Class Methods
+    
     private func updateData(){
         recipeList = FavoriteRecipe.fetchAll()
         tableView.reloadData()
     }
     
-    //MARK: - TableView Configuration
+    // MARK: - TableView Configuration
+    
     private func registerTableViewCells(){
         let recipeCell = UINib(nibName: "CustomCell", bundle: nil)
         self.tableView.register(recipeCell, forCellReuseIdentifier: "CustomCell")
@@ -77,6 +82,7 @@ class FavoriteTableViewController: UITableViewController {
     }
     
     // MARK: - Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToFavoriteDetail" {
             guard let detailVC = segue.destination as? FavoriteDetailViewController else {return}

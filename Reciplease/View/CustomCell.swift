@@ -40,7 +40,7 @@ class CustomCell: UITableViewCell {
         }
     }
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet var titleLabelView: UILabel!
     @IBOutlet var servingsLabelView: UILabel!
@@ -50,7 +50,7 @@ class CustomCell: UITableViewCell {
     @IBOutlet var labelsStackView: UIStackView!
     @IBOutlet var gradientView: UIView!
     
-    //MARK: - View Life Cycle
+    // MARK: - View Life Cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,7 +61,7 @@ class CustomCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    //MARK: - Class Methods
+    // MARK: - Class Methods
 
     private func createGradientLayer() {
         gradientLayer = CAGradientLayer()
