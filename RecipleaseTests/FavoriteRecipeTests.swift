@@ -11,6 +11,7 @@ import CoreData
 @testable import Reciplease
 
 class FavoriteRecipeTests: XCTestCase {
+    
     //MARK: - Properties
     
     lazy var mockContainer: NSPersistentContainer = {
@@ -34,20 +35,36 @@ class FavoriteRecipeTests: XCTestCase {
     func testInsertManyFavoriteRecipesItemsInPersistentContainer() {
         for _ in 0 ..< 100000 {
             addRecipe(into: mockContainer.newBackgroundContext())
-
         }
         XCTAssertNoThrow(try mockContainer.newBackgroundContext().save())
     }
+    
     func testAddFavoriteRecipeItemInPersistentContainer() {
         let recipe = Recipe(label: "", image: "", url: "", shareAs: "Lemon Pie", yield: 0, healthLabels: [], ingredientLines: [], totalTime: 0)
         
         FavoriteRecipe.addRecipe(recipe: recipe, viewContext: mockContainer.viewContext)
-        
-        
+    
         try? mockContainer.viewContext.save()
         XCTAssertEqual(FavoriteRecipe.fetchAll(viewContext: mockContainer.viewContext)[0].id, "Lemon Pie" )
         FavoriteRecipe.deleteRecipe(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext)
-
+    }
+    
+    func testExisting(){
+        let recipe = Recipe(label: "", image: "", url: "", shareAs: "Lemon Pie", yield: 0, healthLabels: [], ingredientLines: [], totalTime: 0)
+        
+        FavoriteRecipe.addRecipe(recipe: recipe, viewContext: mockContainer.viewContext)
+        try? mockContainer.viewContext.save()
+        XCTAssertTrue(FavoriteRecipe.checkIfAlreadyExist(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext))
+        FavoriteRecipe.deleteRecipe(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext)
+    }
+    
+    func testDelete(){
+        addRecipe(into: mockContainer.viewContext)
+        try? mockContainer.viewContext.save()
+        
+        try? mockContainer.viewContext.save()
+        FavoriteRecipe.deleteRecipe(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext)
+        XCTAssertFalse(FavoriteRecipe.checkIfAlreadyExist(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext))
     }
     
     
@@ -56,7 +73,6 @@ class FavoriteRecipeTests: XCTestCase {
     
         FavoriteRecipe.addRecipe(recipe: recipe, viewContext: mockContainer.viewContext)
         
-
         try? mockContainer.viewContext.save()
         FavoriteRecipe.deleteRecipe(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext)
         XCTAssertFalse(FavoriteRecipe.checkIfAlreadyExist(recipeId: "Lemon Pie", viewContext: mockContainer.viewContext))

@@ -18,20 +18,15 @@ class FavoriteRecipe: NSManagedObject {
         return recipeList
     }
     
-//    static func deleteAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
-//        FavoriteRecipe.fetchAll(viewContext: viewContext).forEach({ viewContext.delete($0) })
-//        try? viewContext.save()
-//    }
-    
     static func deleteRecipe(recipeId: String, viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
-        for recipe in FavoriteRecipe.fetchAll(){
-            if recipe.id == recipeId{
-                viewContext.delete(recipe)
+        FavoriteRecipe.fetchAll(viewContext: viewContext).forEach({
+            if $0.id == recipeId{
+                viewContext.delete($0)
             }
-        }
+             })
         try? viewContext.save()
     }
-    
+
     static func addRecipe(recipe: Recipe, viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
         let favoriteRecipe = FavoriteRecipe(context: viewContext)
         favoriteRecipe.id = recipe.shareAs
@@ -56,13 +51,14 @@ class FavoriteRecipe: NSManagedObject {
     }
     
     static func checkIfAlreadyExist(recipeId: String, viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> Bool{
+        var value = false
         
-        for recipe in FavoriteRecipe.fetchAll(){
-            if recipe.id == recipeId{
-                return true
+        FavoriteRecipe.fetchAll(viewContext: viewContext).forEach({
+            if $0.id == recipeId{
+                value = true
             }
-        }
-        return false
+        })
+        return value
     }
     
 }

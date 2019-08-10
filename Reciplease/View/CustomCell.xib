@@ -97,11 +97,11 @@
             <connections>
                 <outlet property="cellImageView" destination="gDi-tM-Pre" id="auG-n9-gff"/>
                 <outlet property="gradientView" destination="IRY-PO-EJF" id="V14-al-Wuo"/>
-                <outlet property="healthLabelView" destination="1j9-O4-8RK" id="nNW-rw-Cnq"/>
+                <outlet property="healthLabel" destination="1j9-O4-8RK" id="oYS-nq-iEh"/>
                 <outlet property="labelsStackView" destination="8vy-h8-WLc" id="GXu-x5-KGn"/>
-                <outlet property="servingsLabelView" destination="vT1-js-tEs" id="kaL-To-w5W"/>
-                <outlet property="timeLabelView" destination="czz-WI-obe" id="Kgt-Hy-azO"/>
-                <outlet property="titleLabelView" destination="HqM-Km-0oZ" id="R8b-tA-ezp"/>
+                <outlet property="servingLabel" destination="vT1-js-tEs" id="7xB-2q-P4F"/>
+                <outlet property="timeLabel" destination="czz-WI-obe" id="GoR-Ui-kwf"/>
+                <outlet property="titleLabel" destination="HqM-Km-0oZ" id="JYU-T8-O5X"/>
             </connections>
             <point key="canvasLocation" x="219.375" y="159.50704225352112"/>
         </tableViewCell>

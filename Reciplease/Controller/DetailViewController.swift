@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -19,8 +19,8 @@ class DetailViewController: UIViewController {
     @IBOutlet private var recipeImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var gradientView: UIView!
-    @IBOutlet private var servingsLabelView: UILabel!
-    @IBOutlet private var timeLabelView: UILabel!
+    @IBOutlet private var servingLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var favoriteBarButtonItem: UIBarButtonItem!
     
     // MARK: - View Life Cycle
@@ -62,11 +62,11 @@ class DetailViewController: UIViewController {
         guard let recipe = recipe else{return}
         titleLabel.text = recipe.label
         if recipe.totalTime != 0 {
-            timeLabelView.text = String(recipe.totalTime) + " min ⧖"
+            timeLabel.text = String(recipe.totalTime) + " min ⧖"
         }else{
-            timeLabelView.text = "- ⧖"
+            timeLabel.text = "- ⧖"
         }
-        servingsLabelView.text = String(Int(recipe.yield)) + " x ☺︎"
+        servingLabel.text = String(Int(recipe.yield)) + " x ☺︎"
         guard let imageData = recipe.image.data else {return}
         recipeImageView.image = UIImage(data: imageData)
         recipeImageView.contentMode = .scaleAspectFill

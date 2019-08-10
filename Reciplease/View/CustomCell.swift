@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomCell: UITableViewCell {
+final class CustomCell: UITableViewCell {
 
     // MARK: - Properties
     
@@ -16,39 +16,39 @@ class CustomCell: UITableViewCell {
     var recipe: Recipe? {
         didSet {
             guard let recipe = recipe else{return}
-            titleLabelView.text = recipe.label
+            titleLabel.text = recipe.label
             if recipe.totalTime != 0 {
-                timeLabelView.text = String(recipe.totalTime) + " min ⧖"
+                timeLabel.text = String(recipe.totalTime) + " min ⧖"
             }else{
-                timeLabelView.text = "- ⧖"
+                timeLabel.text = "- ⧖"
             }
-            servingsLabelView.text = String(Int(recipe.yield)) + " x ☺︎"
+            servingLabel.text = String(Int(recipe.yield)) + " x ☺︎"
             var healthLabelString = String()
             for label in recipe.healthLabels{
                 healthLabelString += label + " ✔︎  "
             }
-            healthLabelView.text = healthLabelString
+            healthLabel.text = healthLabelString
         }
     }
     var favoriteRecipe: FavoriteRecipe?{
         didSet {
             guard let recipe = favoriteRecipe else{return}
-            titleLabelView.text = recipe.label
-            timeLabelView.text = recipe.totalTime
-            servingsLabelView.text = recipe.yield
-            healthLabelView.text = recipe.healthLabel
+            titleLabel.text = recipe.label
+            timeLabel.text = recipe.totalTime
+            servingLabel.text = recipe.yield
+            healthLabel.text = recipe.healthLabel
         }
     }
     
     // MARK: - Outlets
     
-    @IBOutlet var titleLabelView: UILabel!
-    @IBOutlet var servingsLabelView: UILabel!
-    @IBOutlet var timeLabelView: UILabel!
-    @IBOutlet var healthLabelView: UILabel!
-    @IBOutlet var cellImageView: UIImageView!
-    @IBOutlet var labelsStackView: UIStackView!
-    @IBOutlet var gradientView: UIView!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var servingLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet private var healthLabel: UILabel!
+    @IBOutlet private var cellImageView: UIImageView!
+    @IBOutlet private var labelsStackView: UIStackView!
+    @IBOutlet private var gradientView: UIView!
     
     // MARK: - View Life Cycle
     
@@ -69,8 +69,8 @@ class CustomCell: UITableViewCell {
         let greyReciplease = #colorLiteral(red: 0.2047212124, green: 0.1880749464, blue: 0.1830793917, alpha: 1)
         gradientLayer.colors = [UIColor.clear.cgColor, greyReciplease.cgColor]
         self.gradientView.layer.addSublayer(gradientLayer)
-        self.titleLabelView.superview?.bringSubviewToFront(titleLabelView)
+        self.titleLabel.superview?.bringSubviewToFront(titleLabel)
         self.labelsStackView.superview?.bringSubviewToFront(labelsStackView)
-        self.healthLabelView.superview?.bringSubviewToFront(healthLabelView)
+        self.healthLabel.superview?.bringSubviewToFront(healthLabel)
     }
 }

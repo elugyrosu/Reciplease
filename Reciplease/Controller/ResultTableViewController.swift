@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultTableViewController: UITableViewController {
+final class ResultTableViewController: UITableViewController {
     
     // MARK: Properties
     
