@@ -624,8 +624,8 @@
                         <outlet property="favoriteBarButtonItem" destination="wgH-47-zHW" id="y7F-yc-Hqd"/>
                         <outlet property="gradientView" destination="sTP-UT-AtS" id="pQg-Nx-aaH"/>
                         <outlet property="recipeImageView" destination="emf-tr-ZX3" id="4xo-Jc-XdO"/>
-                        <outlet property="servingsLabelView" destination="KqF-on-UDw" id="Jmz-V9-sOV"/>
-                        <outlet property="timeLabelView" destination="lw7-gm-2Jb" id="rmZ-hs-6cu"/>
+                        <outlet property="servingsLabel" destination="KqF-on-UDw" id="qVX-xC-Nzm"/>
+                        <outlet property="timeLabel" destination="lw7-gm-2Jb" id="wHc-hs-E6P"/>
                         <outlet property="titleLabel" destination="hVl-EU-Kxs" id="FOh-Yl-ilz"/>
                     </connections>
                 </viewController>

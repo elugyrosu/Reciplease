@@ -20,8 +20,8 @@ final class FavoriteDetailViewController: UIViewController {
     @IBOutlet private var recipeImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var gradientView: UIView!
-    @IBOutlet private var servingsLabelView: UILabel!
-    @IBOutlet private var timeLabelView: UILabel!
+    @IBOutlet private var servingsLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var favoriteBarButtonItem: UIBarButtonItem!
     
     // MARK: - Action Button Outlets
@@ -52,18 +52,47 @@ final class FavoriteDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        createGradientLayer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkIfFavorite()
     }
     
     // MARK: - Class Methods
     
+    private func checkIfFavorite(){
+        guard let recipe = favoriteRecipe else {return}
+        guard recipe.id != nil else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+    }
+    
     private func updateViews(){
         guard let recipe = favoriteRecipe else{return}
+        guard let time = recipe.totalTime else {return}
+        guard let yield = recipe.yield else {return}
+        if time != "0" {
+            timeLabel.text = time + " min ⧖"
+        }else{
+            timeLabel.text = "- ⧖"
+        }
+        servingsLabel.text = yield + " x ☺︎"
         titleLabel.text = recipe.label
-        timeLabelView.text = recipe.totalTime
-        servingsLabelView.text = recipe.yield
         guard let imageData = recipe.image else {return}
         recipeImageView.image = UIImage(data: imageData)
         recipeImageView.contentMode = .scaleAspectFill
+    }
+    
+    private func createGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.gradientView.bounds
+        let greyColor = #colorLiteral(red: 0.2047212124, green: 0.1880749464, blue: 0.1830793917, alpha: 1)
+        gradientLayer.colors = [UIColor.clear.cgColor, greyColor.cgColor]
+        self.gradientView.layer.addSublayer(gradientLayer)
+        self.titleLabel.superview?.bringSubviewToFront(titleLabel)
     }
 }
 

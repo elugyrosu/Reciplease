@@ -32,13 +32,8 @@ class FavoriteRecipe: NSManagedObject {
         favoriteRecipe.id = recipe.shareAs
         favoriteRecipe.image = recipe.image.data
         favoriteRecipe.label = recipe.label
-        if recipe.totalTime != 0 {
-            favoriteRecipe.totalTime = String(recipe.totalTime) + " min ⧖"
-        }else{
-            favoriteRecipe.totalTime = "- ⧖"
-        }
         favoriteRecipe.totalTime = String(recipe.totalTime)
-        favoriteRecipe.yield = String(Int(recipe.yield)) + " x ☺︎"
+        favoriteRecipe.yield = String(Int(recipe.yield))
         favoriteRecipe.url = recipe.url
         favoriteRecipe.ingredients = recipe.ingredientLines as [NSString]?
         var healthLabelString = String()

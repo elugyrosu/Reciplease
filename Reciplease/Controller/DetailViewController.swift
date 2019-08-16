@@ -75,7 +75,6 @@ final class DetailViewController: UIViewController {
     private func checkIfFavorite(){
         guard let recipe = recipe else {return}
         let id = recipe.shareAs
-      
         if FavoriteRecipe.checkIfAlreadyExist(recipeId: id) == true{
             favoriteBarButtonItem.image = #imageLiteral(resourceName: "Full star")
         }else{

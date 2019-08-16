@@ -33,9 +33,15 @@ final class CustomCell: UITableViewCell {
     var favoriteRecipe: FavoriteRecipe?{
         didSet {
             guard let recipe = favoriteRecipe else{return}
+            guard let totalTime = recipe.totalTime else {return}
+            guard let yield = recipe.yield else {return}
+            if recipe.totalTime != "0" {
+                timeLabel.text = totalTime + " min ⧖"
+            }else{
+                timeLabel.text = "- ⧖"
+            }
             titleLabel.text = recipe.label
-            timeLabel.text = recipe.totalTime
-            servingLabel.text = recipe.yield
+            servingLabel.text = yield + " x ☺︎"
             healthLabel.text = recipe.healthLabel
         }
     }
@@ -46,9 +52,10 @@ final class CustomCell: UITableViewCell {
     @IBOutlet private var servingLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var healthLabel: UILabel!
-    @IBOutlet private var cellImageView: UIImageView!
     @IBOutlet private var labelsStackView: UIStackView!
     @IBOutlet private var gradientView: UIView!
+    @IBOutlet var cellImageView: UIImageView!
+
     
     // MARK: - View Life Cycle
     

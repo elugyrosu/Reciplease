@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -29,6 +29,8 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
+
     }
     
     // MARK: - Action Button Outlets
@@ -61,7 +63,7 @@ final class SearchViewController: UIViewController {
     }
     
     // MARK: - Class Methods
-    
+
     private func toggleActivityIndicator(shown: Bool){
         activityIndicatorView.isHidden = !shown
         searchButton.isHidden = shown

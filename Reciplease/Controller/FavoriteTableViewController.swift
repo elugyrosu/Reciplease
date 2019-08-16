@@ -24,6 +24,7 @@ final class FavoriteTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.registerTableViewCells()
         updateData()
+        navigationController?.navigationBar.barStyle = .black
     }
     
     // MARK: - Class Methods
