@@ -30,7 +30,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         activityIndicatorView.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-
     }
     
     // MARK: - Action Button Outlets
