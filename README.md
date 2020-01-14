@@ -1,13 +1,33 @@
 # Reciplease
 
-Recipe search application for iPhone (project for my OpenClassrooms.com iOS developer formation)
+Reciplease est une application iOS de recherche de recetes de cuisine.
 
-Doesn't work without your own Api Key (create a .plist file "ApiKeys" to put your id in a key named "edamamApiKey", get your id with a free Edamam Recipe Search API subscribtion)
+## Architectures
 
-features:
+Reciplease a été écrit sous Xcode en Swift 5 selon le pattern de conception MVC et supporte les iPhones en mode portrait à partir de iOS11
 
-- API Edamam Recipe Search 
-- Request with Alamofire
+### API
+
+Reciplease utilise l'API Edamam Recipe Search.
+
+Créez un compte gratuit et récupérez votre clé:
+https://developer.edamam.com/edamam-recipe-api
+
+### POD
+
+Bibliothèque Alamofire pour les appels réseau
+
+### Features
+
+- TableView, TableViewController
 - Custom cell xib
-- Favorite recipe list with CoreData
+- CoreData (recettes favorites)
+- Cache des images
+
+### installation
+
+Téléchargez et lancez le workspace reciplease.
+
+Créez un ficher .plist "ApiKeys" dans le dossier Reciplease et créez la clé edamamApiKey, placez comme valeur votre clé Edama Recipe search API.
+
 
