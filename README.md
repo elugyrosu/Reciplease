@@ -25,7 +25,7 @@ Bibliothèque Alamofire pour les appels réseau
 - Cache des images
 - Couverture du modèle (Unit Tests) 100% Core Data et Appels réseaux Alamofire (avec protocol)
 
-### installation
+## Installation
 
 Téléchargez et lancez le workspace reciplease.
 
