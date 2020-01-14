@@ -29,6 +29,8 @@ Bibliothèque Alamofire pour les appels réseau
 
 Téléchargez et lancez le workspace reciplease.
 
-Créez un ficher .plist "ApiKeys" dans le dossier Reciplease et créez la clé edamamApiKey, placez comme valeur votre clé Edama Recipe search API.
+Créez un ficher .plist "ApiKeys" dans le dossier Reciplease et créez la clé "edamamApiK"ey, placez comme valeur votre clé Edamam Recipe search API récupérée lors de votre inscription gratuite:
+https://developer.edamam.com/edamam-recipe-api
+
 
 
