@@ -23,6 +23,7 @@ Bibliothèque Alamofire pour les appels réseau
 - Custom cell xib
 - CoreData (recettes favorites)
 - Cache des images
+- Couverture du modèle (Unit Tests) 100% Core Data et Appels réseaux Alamofire (avec protocol)
 
 ### installation
 
